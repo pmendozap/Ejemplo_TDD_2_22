@@ -9,11 +9,16 @@ module top_pulsos(
     
     logic button_r;
     
-
+    sync_inputs sync_bt (
+        .clk_i      (clk_pi),
+        .pin_i      (button_pi),
+        .pin_o      (button_r)
+    );
+    
     fsm_pulsos dut(
         .clk_i      (clk_pi),      
         .rst_n_i    (rst_n_pi),     // Reset input - active low
-        .button_o   (button_pi),        // Button input
+        .button_o   (button_r),        // Button input
         .pulse_o    (led_po)        // Pulse output 
     );
     
