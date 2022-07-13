@@ -5,9 +5,9 @@
 
 ## Clock signal
 ##Bank = 35, Pin name = IO_L12P_T1_MRCC_35,					Sch name = CLK100MHZ
-#set_property PACKAGE_PIN E3 [get_ports clk]							
-	#set_property IOSTANDARD LVCMOS33 [get_ports clk]
-	#create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
+set_property PACKAGE_PIN E3 [get_ports clk_pi]							
+	set_property IOSTANDARD LVCMOS33 [get_ports clk_pi]
+	create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk_pi]
  
 ## Switches
 ##Bank = 34, Pin name = IO_L21P_T3_DQS_34,					Sch name = SW0
@@ -63,8 +63,8 @@
 
 ## LEDs
 ##Bank = 34, Pin name = IO_L24N_T3_34,						Sch name = LED0
-#set_property PACKAGE_PIN T8 [get_ports {led[0]}]					
-	#set_property IOSTANDARD LVCMOS33 [get_ports {led[0]}]
+set_property PACKAGE_PIN T8 [get_ports {led_po}]					
+	set_property IOSTANDARD LVCMOS33 [get_ports {led_po}]
 ##Bank = 34, Pin name = IO_L21N_T3_DQS_34,					Sch name = LED1
 #set_property PACKAGE_PIN V9 [get_ports {led[1]}]					
 	#set_property IOSTANDARD LVCMOS33 [get_ports {led[1]}]
@@ -191,11 +191,11 @@
 #set_property PACKAGE_PIN C12 [get_ports btnCpuReset]				
 	#set_property IOSTANDARD LVCMOS33 [get_ports btnCpuReset]
 ##Bank = 15, Pin name = IO_L11N_T1_SRCC_15,					Sch name = BTNC
-#set_property PACKAGE_PIN E16 [get_ports btnC]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnC]
+set_property PACKAGE_PIN E16 [get_ports rst_n_pi]						
+	set_property IOSTANDARD LVCMOS33 [get_ports rst_n_pi]
 ##Bank = 15, Pin name = IO_L14P_T2_SRCC_15,					Sch name = BTNU
-#set_property PACKAGE_PIN F15 [get_ports btnU]						
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnU]
+set_property PACKAGE_PIN F15 [get_ports button_pi]						
+	set_property IOSTANDARD LVCMOS33 [get_ports button_pi]
 ##Bank = CONFIG, Pin name = IO_L15N_T2_DQS_DOUT_CSO_B_14,	Sch name = BTNL
 #set_property PACKAGE_PIN T16 [get_ports btnL]						
 	#set_property IOSTANDARD LVCMOS33 [get_ports btnL]
