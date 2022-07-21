@@ -18,7 +18,7 @@ module fsm_pulsos_tb;
     fsm_pulsos dut(
         .clk_i      (clk),      
         .rst_n_i    (rst_n),    // Reset input - active low
-        .button_o   (button),   // Button input
+        .button_i   (button),   // Button input
         .pulse_o    (pulse)     // Pulse output 
     );
      

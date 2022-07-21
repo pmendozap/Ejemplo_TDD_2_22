@@ -18,7 +18,7 @@ module top_pulsos(
     fsm_pulsos dut(
         .clk_i      (clk_pi),      
         .rst_n_i    (rst_n_pi),     // Reset input - active low
-        .button_o   (button_r),        // Button input
+        .button_i   (button_r),        // Button input
         .pulse_o    (led_po)        // Pulse output 
     );
     

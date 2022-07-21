@@ -3,7 +3,7 @@
 module fsm_pulsos(
     input logic     clk_i,      
     input logic     rst_n_i,    // Reset input - active low
-    input logic     button_o,   // Button input
+    input logic     button_i,   // Button input
     output logic    pulse_o     // Pulse output 
     );
 
@@ -18,19 +18,19 @@ module fsm_pulsos(
         case(state_r)
         WAIT_ONE:
             begin 
-                if(!button_o) next_state = WAIT_ONE;
+                if(!button_i) next_state = WAIT_ONE;
                 else          next_state = PULSE_GEN;
             end
             
         PULSE_GEN:
             begin
-                if(!button_o) next_state = WAIT_ONE;
+                if(!button_i) next_state = WAIT_ONE;
                 else          next_state = WAIT_ZERO;
             end
             
         WAIT_ZERO:
             begin
-                if(!button_o) next_state = WAIT_ONE;
+                if(!button_i) next_state = WAIT_ONE;
                 else          next_state = WAIT_ZERO;
             end
             
