@@ -6,51 +6,53 @@ module fsm_pulsos(
     input logic     button_i,   // Button input
     output logic    pulse_o     // Pulse output 
     );
+    
+    import pkg_top_pulsos::*;
 
     enum logic [1:0] {
-        WAIT_ONE,           // Wait for One in the input
+        WAIT_ACTIVE,        // Wait for the active level in the input
         PULSE_GEN,          // Generate the pulse
-        WAIT_ZERO           // Wait for the input to go back to zero
+        WAIT_INACTIVE       // Wait for the input to go back to inactive
     } state_r, next_state;
 
     // NEXT STATE LOGIC -- Combinational
     always_comb begin
         case(state_r)
-        WAIT_ONE:
+        WAIT_ACTIVE:
             begin 
-                if(!button_i) next_state = WAIT_ONE;
-                else          next_state = PULSE_GEN;
+                if(button_i==DETECTED_SLOPE) next_state = PULSE_GEN;
+                else                         next_state = WAIT_ACTIVE;
             end
             
         PULSE_GEN:
             begin
-                if(!button_i) next_state = WAIT_ONE;
-                else          next_state = WAIT_ZERO;
+                if(button_i==DETECTED_SLOPE) next_state = WAIT_INACTIVE;
+                else                         next_state = WAIT_ACTIVE;
             end
             
-        WAIT_ZERO:
+        WAIT_INACTIVE:
             begin
-                if(!button_i) next_state = WAIT_ONE;
-                else          next_state = WAIT_ZERO;
+                if(button_i==DETECTED_SLOPE) next_state = WAIT_INACTIVE;
+                else                         next_state = WAIT_ACTIVE;
             end
             
-        default: next_state = WAIT_ONE;
+        default: next_state = WAIT_ACTIVE;
         endcase
     end
     
     // MEMORY
     always_ff @(posedge clk_i)
-        if(!rst_n_i) state_r <= WAIT_ONE;
+        if(!rst_n_i) state_r <= WAIT_ACTIVE;
         else         state_r <= next_state;
 
 
     // OUTPUT LOGIC - Combinational
     always_comb begin
         case(state_r)
-            WAIT_ONE:  pulse_o = 1'b0;
-            PULSE_GEN: pulse_o = 1'b1;
-            WAIT_ZERO: pulse_o = 1'b0;
-            default:   pulse_o = 1'b0; 
+            WAIT_ACTIVE:    pulse_o = ~OUT_POLARITY;
+            PULSE_GEN:      pulse_o = OUT_POLARITY;
+            WAIT_INACTIVE:  pulse_o = ~OUT_POLARITY;
+            default:        pulse_o = ~OUT_POLARITY; 
         endcase
     end
 
