@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module fsm_pulsos_tb;
+module tb_fsm_pulsos;
 import pkg_top_pulsos::*;
     // variables
     logic    clk;      
