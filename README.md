@@ -39,6 +39,8 @@ module fsm_pulsos(
 
 El módulo no posee parámetros. 
 
+#### 3. Entradas y salidas
+
 - `clk_i`: Entrada de reloj del módulo
 - `rst_n_i`: Entrada de reset del módulo, activo en **bajo**.
 - `button_i`: Entrada del flanco a detectar.
