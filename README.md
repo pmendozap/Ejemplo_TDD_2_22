@@ -56,7 +56,7 @@ En esta máquina la salida **NO** está registrada.
 
 #### 5. Testbench
 
-El testbench de la FSM está en `fsm_pulsos_tb.sv`. En este testbench se genera una instancia de la máquina de estados y se generan entradas de ancho aleatorio. Además al final de la prueba se generan entradas de un ciclo de reloj de ancho separadas por un ciclo de reloj (una de las esquinas de prueba).
+El testbench de la FSM está en `fsm_pulsos_tb.sv`. En este testbench se genera una instancia de la máquina de estados y se generan entradas de ancho aleatorio. Además, al final de la prueba se generan entradas de un ciclo de reloj de ancho separadas por un ciclo de reloj (una de las esquinas de prueba).
 
 La prueba es auto-verificable e indica cuando la salida del módulo no cumple con un ancho de un ciclo de reloj (ya sea porque no se genera una salida o que se excede de un ciclo de reloj) cada vez que se detecta el flanco a buscar.
 
@@ -96,7 +96,7 @@ En todas las pruebas se muestra que el circuito cumple con las especificaciones.
 
 ### 3.2 Módulo "sync_inputs"
 
-Este modulo se utiliza para sincronizar las entradas con el reloj del sistema.
+Este módulo se utiliza para sincronizar las entradas con el reloj del sistema.
 
 #### 1. Encabezado del módulo
 ```SystemVerilog
@@ -146,7 +146,7 @@ module top_pulsos(
 
 #### 2. Parámetros
 
-Este módulo no posee parametros. 
+Este módulo no posee parámetros. 
 
 #### 3. Entradas y salidas:
 
@@ -161,13 +161,13 @@ El módulo se basa en el siguiente diagrama de bloques.
 
 ![top](https://raw.githubusercontent.com/pmendozap/Ejemplo_TDD_2_22/main/doc/top.svg)
 
-Según se observa, la entrada a este bloque es un botón externo a la FPGA. La señal generada se hace pasar por un bloque sincronizador. Una vez que se tiene una señal sincronizada, esta llega a la `fsm_pulsos`, la cual se encarga de detectar el flanco `DETECTED_SLOPE`. La salida que corresponde a un pulso de un ciclo de reloj con nivel `OUT_POLARITY` se dá una sola vez aunque el nivel de la entrada se mantenga. La figura muestra el comportamiento esperado del sistema:
+Según se observa, la entrada a este bloque es un botón externo a la FPGA. La señal generada se hace pasar por un bloque sincronizador. Una vez que se tiene una señal sincronizada, esta llega a la `fsm_pulsos`, la cual se encarga de detectar el flanco `DETECTED_SLOPE`. La salida que corresponde a un pulso de un ciclo de reloj con nivel `OUT_POLARITY` se da una sola vez, aunque el nivel de la entrada se mantenga. La figura muestra el comportamiento esperado del sistema:
 
 ![esperado](https://raw.githubusercontent.com/pmendozap/Ejemplo_TDD_2_22/main/doc/waves_top.svg)
 
 #### 4. Criterios de diseño
 
-a. Se definieron los parametros `DETECTED_SLOPE` y `OUT_POLARITY` para permitir que el sistema pueda adaptarse a diferentes requerimientos aparte del mostrado en la figura anterior. 
+a. Se definieron los parámetros `DETECTED_SLOPE` y `OUT_POLARITY` para permitir que el sistema pueda adaptarse a diferentes requerimientos aparte del mostrado en la figura anterior. 
 
 b. Se diseñó y comprobó el bloque `fsm_pulsos`. El diseño de este se mostró en ["fsm_pulsos"](#31-m%C3%B3dulo-fsm_pulsos)).
 
@@ -204,7 +204,7 @@ set_property PACKAGE_PIN F15 [get_ports button_pi]
 
 No se ha generado un test-bench para este módulo
 
-### 3.4 Módulo "generico"
+### 3.4 Módulo "genérico"
 #### 1. Encabezado del módulo
 #### 2. Parámetros
 #### 3. Entradas y salidas:
