@@ -7,9 +7,9 @@ module top_pulsos(
         output logic led_po         // Led output port
     );
     
-    //señales internas
-    logic button_r;     // Botón sincronizado
-    logic led_c;        // Salida del módulo generador de pulsos (sin registrar)
+    //seï¿½ales internas
+    logic button_r;     // Botï¿½n sincronizado
+    logic led_c;        // Salida del mï¿½dulo generador de pulsos (sin registrar)
     
     // Sincronizadores
     sync_inputs sync_bt (

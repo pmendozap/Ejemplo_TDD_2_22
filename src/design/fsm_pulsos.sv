@@ -20,20 +20,20 @@ module fsm_pulsos(
         case(state_r)
         WAIT_ACTIVE:
             begin 
-                if(button_i==DETECTED_SLOPE) next_state = PULSE_GEN;
-                else                         next_state = WAIT_ACTIVE;
+                if(button_i == DETECTED_SLOPE) next_state = PULSE_GEN;
+                else                           next_state = WAIT_ACTIVE;
             end
             
         PULSE_GEN:
             begin
-                if(button_i==DETECTED_SLOPE) next_state = WAIT_INACTIVE;
-                else                         next_state = WAIT_ACTIVE;
+                if(button_i == DETECTED_SLOPE) next_state = WAIT_INACTIVE;
+                else                           next_state = WAIT_ACTIVE;
             end
             
         WAIT_INACTIVE:
             begin
-                if(button_i==DETECTED_SLOPE) next_state = WAIT_INACTIVE;
-                else                         next_state = WAIT_ACTIVE;
+                if(button_i == DETECTED_SLOPE) next_state = WAIT_INACTIVE;
+                else                           next_state = WAIT_ACTIVE;
             end
             
         default: next_state = WAIT_ACTIVE;
